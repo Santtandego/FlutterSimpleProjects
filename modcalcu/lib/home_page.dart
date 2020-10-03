@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 class HomePage extends StatefulWidget {
 
   @override
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 height: 40,
                 width: double.infinity,
-                color: Color.fromRGBO(212, 21, 242, 1),
+                color: cPrimaryColor,
                 child: Row(children: <Widget>[
                   SizedBox(width: 10,),
                   Text('Division: $_truncate',
@@ -110,7 +112,7 @@ class _HomePageState extends State<HomePage> {
               '$_counterLeft',
               style: TextStyle(
                 fontSize: _counterSize,
-                color: Color.fromRGBO(246, 4, 44, 1),
+                color: cLeftColor,
               ),
             ),
             SizedBox(width: 150,),
@@ -118,7 +120,7 @@ class _HomePageState extends State<HomePage> {
               '$_counterRight',
               style: TextStyle(
                 fontSize: _counterSize,
-                color: Color.fromRGBO(20, 4, 246, 1)
+                color: cRightColor,
               ),
             ),
             ],),
@@ -153,7 +155,7 @@ class _HomePageState extends State<HomePage> {
         Row(children: <Widget>[
           SizedBox(width: 192),
           FloatingActionButton(
-            backgroundColor: Color.fromRGBO(212, 21, 242, 1),
+            backgroundColor: cPrimaryColor,
             child: Container(
               height: double.infinity,
               width: double.infinity,
@@ -375,45 +377,43 @@ class _HomePageState extends State<HomePage> {
 
 
   Widget _counters(){
-    final _countersColorLeft = Color.fromRGBO(246, 4, 44, 1);
-    final _countersColorRight = Color.fromRGBO(20, 4, 246, 1);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         SizedBox(width: 25),
         FloatingActionButton(
-          backgroundColor: _countersColorLeft,
+          backgroundColor: cLeftColor,
           onPressed: _incrementCounterLeft,
           child: Icon(Icons.add),
           ),
         SizedBox(width: 5),
         FloatingActionButton(
-          backgroundColor: _countersColorLeft,
+          backgroundColor: cLeftColor,
           onPressed: _counterResetLeft,
           child: Text('0'),
           ),
         SizedBox(width: 5),
         FloatingActionButton(
-          backgroundColor: _countersColorLeft,
+          backgroundColor: cLeftColor,
           onPressed: _decrementCounterLeft,
           child: Text('-'),
           ),
         SizedBox(width: 25,),
         FloatingActionButton(
-          backgroundColor: _countersColorRight,
+          backgroundColor: cRightColor,
           onPressed: _decrementCounterRight,
           child: Text('-'),
         ),
         SizedBox(width: 5),
         FloatingActionButton(
-          backgroundColor: _countersColorRight,
+          backgroundColor: cRightColor,
           onPressed: _counterResetRight,
           child: Text('0'),
         ),
         SizedBox(width: 5),
         FloatingActionButton(
-          backgroundColor: _countersColorRight,
+          backgroundColor: cRightColor,
           onPressed: _incrementCounterRight,
           child: Icon(Icons.add),
           ),
