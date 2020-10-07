@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'Components/components.dart';
 import 'constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,7 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //counters left and right
+  
+   //counters left and right
   int _counterLeft = 0;
   int _counterRight = 0;
 
@@ -56,7 +58,7 @@ class _HomePageState extends State<HomePage> {
       _counterRight--;
     });
   }
-  
+
   void _modulus(){
       _operationLeft = _counterLeft % _counterRight;
       _operationRight = _counterLeft / _counterRight;
@@ -70,6 +72,48 @@ class _HomePageState extends State<HomePage> {
 
   final _buttonSize = 50.0;
   double _counterSize = 25.0;
+
+  void _oneDownButton(){
+    setState(() => _counterRight = 10);
+  }
+  void _twoDownButton(){
+    setState(() => _counterRight = 25);
+  }
+  void _threeDownButton(){
+    setState(() => _counterRight = 100);
+  }
+  void _fourDownButton(){
+    setState(() => _counterRight = 150);
+  }
+  void _fiveDownButton(){
+    setState(() => _counterRight = 250);
+  }
+  void _sixDownButton(){
+    setState(() => _counterRight = 1000);
+  }
+
+  void _oneUpButton(){
+    setState(() => _counterLeft = 10);
+  }
+  void _twoUpButton(){
+    setState(() => _counterLeft = 25);
+  }
+  void _threeUpButton(){
+    setState(() => _counterLeft = 100);
+  }
+  void _fourUpButton(){
+    setState(() => _counterLeft = 150);
+  }
+  void _fiveUpButton(){
+    setState(() => _counterLeft = 250);
+  }
+  void _sixUpButton(){
+    setState(() => _counterLeft = 1000);
+  }
+
+  
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -108,22 +152,23 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-            Text(
-              '$_counterLeft',
-              style: TextStyle(
-                fontSize: _counterSize,
-                color: cLeftColor,
+              Text(
+                  '$_counterLeft',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: cLeftColor,
+                  ),
               ),
+              SizedBox(width: 100,),
+              Text(
+                '$_counterRight',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: cRightColor,
+                  ),
+              )
+            ],
             ),
-            SizedBox(width: 150,),
-            Text(
-              '$_counterRight',
-              style: TextStyle(
-                fontSize: _counterSize,
-                color: cRightColor,
-              ),
-            ),
-            ],),
             _buttonsDown(),
           ],
         ),
@@ -136,22 +181,19 @@ class _HomePageState extends State<HomePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _firstRowUp(),
-        SizedBox(height: 10.0),
-        _secondRowUp(),
-        SizedBox(height: 20.0),
+        _firstRowUp(bottom: 10),
+        _secondRowUp(bottom: 20),
       ],
     );
   }
   Widget _buttonsDown(){
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         SizedBox(height: 20.0),
-        _firstRowDown(),
-        SizedBox(height: 10.0),
-        _secondRowDown(),
-        SizedBox(height: 10.0),
+        _firstRowDown(bottom: 10),
+        _secondRowDown(bottom: 10),
         Row(children: <Widget>[
           SizedBox(width: 192),
           FloatingActionButton(
@@ -177,204 +219,66 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-  Widget _firstRowDown(){  
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Ink(
-          child: IconButton(
-            onPressed: _oneDownButton,
-            icon: Icon(
-              Icons.looks_one,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _twoDownButton,
-            icon: Icon(
-              Icons.looks_two,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _threeDownButton,
-            icon: Icon(
-              Icons.looks_3,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-      ],
+
+    Widget _firstRowUp({double bottom}){
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottom),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          IconButtonValues(icon: Icons.looks_one, tap: _oneUpButton,),
+          IconButtonValues(icon: Icons.looks_two, tap: _twoUpButton,),
+          IconButtonValues(icon: Icons.looks_3, tap: _threeUpButton,),
+        ],
+      ),
     );
   }
 
-  Widget _secondRowDown(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Ink(
-          child: IconButton(
-            onPressed: _fourDownButton,
-            icon: Icon(
-              Icons.looks_4,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _fiveDownButton,
-            icon: Icon(
-              Icons.looks_5,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _sixDownButton,
-            icon: Icon(
-              Icons.looks_6,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-      ],
+  Widget _secondRowUp({double bottom}){
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottom),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          IconButtonValues(icon: Icons.looks_4, tap: _fourUpButton,),
+          IconButtonValues(icon: Icons.looks_5, tap: _fiveUpButton,),
+          IconButtonValues(icon: Icons.looks_6, tap: _sixUpButton,),
+        ],
+      ),
     );
   }
 
-  void _oneDownButton(){
-    setState(() => _counterRight = 10);
-  }
-  void _twoDownButton(){
-    setState(() => _counterRight = 25);
-  }
-  void _threeDownButton(){
-    setState(() => _counterRight = 100);
-  }
-  void _fourDownButton(){
-    setState(() => _counterRight = 150);
-  }
-  void _fiveDownButton(){
-    setState(() => _counterRight = 250);
-  }
-  void _sixDownButton(){
-    setState(() => _counterRight = 1000);
-  }
-
-  Widget _firstRowUp(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Ink(
-          child: IconButton(
-            onPressed: _oneUpButton,
-            icon: Icon(
-              Icons.looks_one,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _twoUpButton,
-            icon: Icon(
-              Icons.looks_two,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _threeUpButton,
-            icon: Icon(
-              Icons.looks_3,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-      ],
+  Widget _firstRowDown({double bottom}){  
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottom),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          IconButtonValues(icon: Icons.looks_one, tap: _oneDownButton,),
+          IconButtonValues(icon: Icons.looks_two, tap: _twoDownButton,),
+          IconButtonValues(icon: Icons.looks_3, tap: _threeDownButton,),
+        ],
+      ),
     );
   }
 
-  Widget _secondRowUp(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Ink(
-          child: IconButton(
-            onPressed: _fourUpButton,
-            icon: Icon(
-              Icons.looks_4,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _fiveUpButton,
-            icon: Icon(
-              Icons.looks_5,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-        SizedBox(width: 30.0),
-        Ink(
-          child: IconButton(
-            onPressed: _sixUpButton,
-            icon: Icon(
-              Icons.looks_6,
-              size: 60.0,
-            ),
-            iconSize: _buttonSize,
-            ),
-        ),
-      ],
+  Widget _secondRowDown({double bottom}){
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottom),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          IconButtonValues(icon: Icons.looks_4, tap: _fourDownButton,),
+          IconButtonValues(icon: Icons.looks_5, tap: _fiveDownButton,),
+          IconButtonValues(icon: Icons.looks_6, tap: _sixDownButton,),
+        ],
+      ),
     );
   }
-
-  void _oneUpButton(){
-    setState(() => _counterLeft = 10);
-  }
-  void _twoUpButton(){
-    setState(() => _counterLeft = 25);
-  }
-  void _threeUpButton(){
-    setState(() => _counterLeft = 100);
-  }
-  void _fourUpButton(){
-    setState(() => _counterLeft = 150);
-  }
-  void _fiveUpButton(){
-    setState(() => _counterLeft = 250);
-  }
-  void _sixUpButton(){
-    setState(() => _counterLeft = 1000);
-  }
-
 
   Widget _counters(){
 
@@ -423,4 +327,33 @@ class _HomePageState extends State<HomePage> {
 
   }
     
+}
+
+class CurrentValueBox extends StatefulWidget {
+
+  final int counter;
+  final Color valueColor;
+
+  const CurrentValueBox({
+    Key key,
+    this.counter,
+    this.valueColor,
+  }) : super(key: key);
+
+  @override
+  _CurrentValueBoxState createState() => _CurrentValueBoxState();
+}
+
+class _CurrentValueBoxState extends State<CurrentValueBox> {
+  
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+        '$widget.counter',
+        style: TextStyle(
+          fontSize: 25,
+          color: widget.valueColor,
+        ),
+    );
+  }
 }
