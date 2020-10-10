@@ -1,9 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'Components/components.dart';
-import 'Components/constants.dart';
+import 'Components/uniques.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -121,7 +119,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 60),
             buttonsUp(),
             CurrentValues(counterLeft: _counterLeft, counterRight: _counterRight),
-            _buttonsDown(),
+            buttonsDown(),
           ],
         ),
       ),
@@ -140,41 +138,32 @@ class _HomePageState extends State<HomePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _firstRowUp(bottom: 10),
-        _secondRowUp(bottom: 20),
+        firstRowUp(bottom: 10),
+        secondRowUp(bottom: 20),
       ],
     );
   }
-  Widget _buttonsDown(){
+  Widget buttonsDown(){
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         SizedBox(height: 20.0),
-        _firstRowDown(bottom: 10),
-        _secondRowDown(bottom: 10),
+        firstRowDown(bottom: 10),
+        secondRowDown(bottom: 10),
         Row(children: <Widget>[
           SizedBox(width: 192),
-          FloatingActionButton(
-            backgroundColor: cPrimaryColor,
-            child: Container(
-              child: Center(child: Text('%', 
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600
-                ),
-                )
-                ),
-              ),
-            onPressed: _modulus, 
-          ),
+          FABModulus(
+            modulus: _modulus,
+            title: '%',
+          )
         ]
         )
       ],
     );
   }
 
-    Widget _firstRowUp({double bottom}){
+    Widget firstRowUp({double bottom}){
     return Padding(
       padding: EdgeInsets.only(bottom: bottom),
       child: Row(
@@ -189,7 +178,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _secondRowUp({double bottom}){
+  Widget secondRowUp({double bottom}){
     return Padding(
       padding: EdgeInsets.only(bottom: bottom),
       child: Row(
@@ -204,7 +193,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _firstRowDown({double bottom}){  
+  Widget firstRowDown({double bottom}){  
     return Padding(
       padding: EdgeInsets.only(bottom: bottom),
       child: Row(
@@ -219,7 +208,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _secondRowDown({double bottom}){
+  Widget secondRowDown({double bottom}){
     return Padding(
       padding: EdgeInsets.only(bottom: bottom),
       child: Row(
