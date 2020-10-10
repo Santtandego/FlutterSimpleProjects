@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'Components/components.dart';
-import 'constants.dart';
+import 'Components/constants.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -70,8 +70,6 @@ class _HomePageState extends State<HomePage> {
       setState(() => _truncate);
   }
 
-  final _buttonSize = 50.0;
-  double _counterSize = 25.0;
 
   void _oneDownButton(){
     setState(() => _counterRight = 10);
@@ -111,10 +109,6 @@ class _HomePageState extends State<HomePage> {
     setState(() => _counterLeft = 1000);
   }
 
-  
-
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,57 +117,22 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[            
-              Container(
-                height: 40,
-                width: double.infinity,
-                color: cPrimaryColor,
-                child: Row(children: <Widget>[
-                  SizedBox(width: 10,),
-                  Text('Division: $_truncate',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(width: 55,),
-                  Text('Modulus: $_operationLeft',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                ],)
-              ),
+            CustomAppBar(truncate: _truncate, operationLeft: _operationLeft),
             SizedBox(height: 60),
             buttonsUp(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-              Text(
-                  '$_counterLeft',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: cLeftColor,
-                  ),
-              ),
-              SizedBox(width: 100,),
-              Text(
-                '$_counterRight',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: cRightColor,
-                  ),
-              )
-            ],
-            ),
+            CurrentValues(counterLeft: _counterLeft, counterRight: _counterRight),
             _buttonsDown(),
           ],
         ),
       ),
-      floatingActionButton: _counters(),
+      floatingActionButton: counters(
+        addL: _incrementCounterLeft,
+        ceroL: _counterResetLeft,
+        resetL: _decrementCounterLeft,
+        resetR: _decrementCounterRight,
+        ceroR: _counterResetRight,
+        addR: _incrementCounterRight,
+      ),
     );
   }
 
@@ -199,18 +158,13 @@ class _HomePageState extends State<HomePage> {
           FloatingActionButton(
             backgroundColor: cPrimaryColor,
             child: Container(
-              height: double.infinity,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35),
-          ),
               child: Center(child: Text('%', 
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w600
                 ),
-                  )
-                 ),
+                )
+                ),
               ),
             onPressed: _modulus, 
           ),
@@ -280,80 +234,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _counters(){
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        SizedBox(width: 25),
-        FloatingActionButton(
-          backgroundColor: cLeftColor,
-          onPressed: _incrementCounterLeft,
-          child: Icon(Icons.add),
-          ),
-        SizedBox(width: 5),
-        FloatingActionButton(
-          backgroundColor: cLeftColor,
-          onPressed: _counterResetLeft,
-          child: Text('0'),
-          ),
-        SizedBox(width: 5),
-        FloatingActionButton(
-          backgroundColor: cLeftColor,
-          onPressed: _decrementCounterLeft,
-          child: Text('-'),
-          ),
-        SizedBox(width: 25,),
-        FloatingActionButton(
-          backgroundColor: cRightColor,
-          onPressed: _decrementCounterRight,
-          child: Text('-'),
-        ),
-        SizedBox(width: 5),
-        FloatingActionButton(
-          backgroundColor: cRightColor,
-          onPressed: _counterResetRight,
-          child: Text('0'),
-        ),
-        SizedBox(width: 5),
-        FloatingActionButton(
-          backgroundColor: cRightColor,
-          onPressed: _incrementCounterRight,
-          child: Icon(Icons.add),
-          ),
-        SizedBox(width: 1),
-      ],
-    );
-
-  }
-    
-}
-
-class CurrentValueBox extends StatefulWidget {
-
-  final int counter;
-  final Color valueColor;
-
-  const CurrentValueBox({
-    Key key,
-    this.counter,
-    this.valueColor,
-  }) : super(key: key);
-
-  @override
-  _CurrentValueBoxState createState() => _CurrentValueBoxState();
-}
-
-class _CurrentValueBoxState extends State<CurrentValueBox> {
   
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-        '$widget.counter',
-        style: TextStyle(
-          fontSize: 25,
-          color: widget.valueColor,
-        ),
-    );
-  }
 }
