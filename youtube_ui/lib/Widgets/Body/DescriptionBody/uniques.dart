@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:youtube_ui/Components/constants_values.dart';
+import 'package:youtube_ui/Components/c_colors.dart';
 
 class TitleDescriptionVideo extends StatelessWidget {
   const TitleDescriptionVideo({

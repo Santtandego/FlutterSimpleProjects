@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-import 'package:youtube_ui/Components/constants_values.dart';
+import 'package:youtube_ui/Components/c_colors.dart';
 import 'AppBarBody/appbar_body.dart';
 import 'BackgroundBody/background_body.dart';
 import 'ContentBody/content_body.dart';

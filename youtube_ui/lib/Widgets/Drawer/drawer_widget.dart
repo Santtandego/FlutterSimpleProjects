@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:youtube_ui/Components/components.dart';
-import 'package:youtube_ui/Components/constants_values.dart';
+import 'package:youtube_ui/Components/c_colors.dart';
 import 'package:youtube_ui/Widgets/Drawer/uniques.dart';
 
 class DrawerWidget extends StatelessWidget {
