@@ -100,11 +100,27 @@ class TextFieldBox extends StatelessWidget {
   }
 }
 
+class BottomContent extends StatelessWidget {
+  const BottomContent({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Spacer(),
+        IconAppBar(icon: Icons.mail),
+        AppBarTextLeading(title: 'Mail', offset: 25,),
+      ],
+    );
+  }
+}
+
 class BodyWidget extends StatelessWidget {
   const BodyWidget({
     Key key,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -120,17 +136,11 @@ class BodyWidget extends StatelessWidget {
               SizedBox(height: size.height * 0.05),
               TextFieldBox(),
               SizedBox(height: size.height * 0.2),
-              Row(
-                children: [
-                  Spacer(),
-                  IconAppBar(icon: Icons.mail),
-                  AppBarTextLeading(title: 'Mail'),
-                  SizedBox(width: 5,)
-                ],
-              )
+              BottomContent(),
             ],
           ),
       ],
     );
   }
 }
+
