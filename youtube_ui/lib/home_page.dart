@@ -4,12 +4,7 @@ import 'package:youtube_ui/Widgets/AppBar/appbar_widget.dart';
 import 'Components/c_colors.dart';
 import 'Widgets/AppBar/uniques.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 

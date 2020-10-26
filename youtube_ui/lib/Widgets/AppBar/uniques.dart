@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:youtube_ui/Components/components.dart';
 import 'package:youtube_ui/Components/c_colors.dart';
 
-class LeadingButton extends StatefulWidget {
+class LeadingButton extends StatelessWidget {
 
   final Function tap;
 
@@ -14,16 +14,11 @@ class LeadingButton extends StatefulWidget {
     this.tap,
   })  : super(key: key);
 
-  @override
-  _LeadingButtonState createState() => _LeadingButtonState();
-}
-
-class _LeadingButtonState extends State<LeadingButton> {
   
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.tap,
+      onTap: tap,
       child: Icon(
         Icons.menu,
         size: 40,
