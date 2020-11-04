@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'c_colors.dart';
+import 'colors.dart';
 
 class IconAppBar extends StatelessWidget {
 

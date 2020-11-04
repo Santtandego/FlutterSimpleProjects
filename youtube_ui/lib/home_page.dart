@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_ui/Widgets/AppBar/appbar_widget.dart';
 
-import 'Components/c_colors.dart';
+import 'Components/colors.dart';
 import 'Widgets/AppBar/uniques.dart';
 
 class HomePage extends StatelessWidget {
