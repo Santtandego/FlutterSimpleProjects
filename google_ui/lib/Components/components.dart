@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_ui/Components/uniques.dart';
 
-import 'c_color.dart';
+import 'colors.dart';
 
 List<Widget> actions(){
   return [
@@ -29,7 +29,7 @@ class ContentBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      color: backgColor,
+      color: bColor,
       child: Column(
         children: [
           SizedBox(height: size.height * 0.2,),
@@ -88,11 +88,11 @@ class GoogleWord extends StatelessWidget {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       GoogleText(title: 'G',),
-      GoogleText(title: 'o', color: oeColor,),
-      GoogleText(title: 'o', color: ooColor,),
+      GoogleText(title: 'o', color: dColor,),
+      GoogleText(title: 'o', color: eColor,),
       GoogleText(title: 'g',),
-      GoogleText(title: 'l', color: lColor,),
-      GoogleText(title: 'e', color: oeColor,),
+      GoogleText(title: 'l', color: fColor,),
+      GoogleText(title: 'e', color: dColor,),
       ]
     );
   }
@@ -114,7 +114,7 @@ class GoogleText extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        color: color ?? gColor,
+        color: color ?? cColor,
         fontFamily: 'KronaOne',
         fontSize: 70,
       ),
@@ -138,7 +138,7 @@ class TextFieldBox extends StatelessWidget {
           width: 600,
           height: 50,
           decoration: BoxDecoration(
-            color: backgColor,
+            color: bColor,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
@@ -157,7 +157,7 @@ class TextFieldBox extends StatelessWidget {
               focusedBorder: InputBorder.none,
               suffixIcon: Icon(
                 Icons.mic_outlined,
-                color: gColor.withOpacity(0.6),
+                color: cColor.withOpacity(0.6),
               )
             ),
           ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_ui/Components/components.dart';
 
-import 'Components/c_color.dart';
+import 'Components/colors.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: backgColor,
+        backgroundColor: bColor,
         elevation: 0.0,
         actions: actions(),
       ),

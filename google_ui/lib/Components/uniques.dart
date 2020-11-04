@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'c_color.dart';
+import 'colors.dart';
 
 class AppBarButton extends StatelessWidget {
   const AppBarButton({
@@ -10,7 +10,7 @@ class AppBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      color: buttonColor,
+      color: aColor,
       onPressed: (){},
       child: Text(
         'Log in',
