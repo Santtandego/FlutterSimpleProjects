@@ -1,78 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:google_ui/Components/uniques.dart';
 
 import 'colors.dart';
 
-List<Widget> actions(){
-  return [
-    Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AppBarText(title: 'Gmail',),
-              AppBarText(title: 'Images',),
-              AppBarIcon(),
-              AppBarButton(),
-            ],
-          ),
-          SizedBox(width: 35),
-  ];
-}
 
-class ContentBody extends StatelessWidget {
-  const ContentBody({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      color: bColor,
-      child: Column(
-        children: [
-          SizedBox(height: size.height * 0.2,),
-          GoogleWord(),
-          SizedBox(height: size.height * 0.04),
-          TextFieldBox(),
-          SizedBox(height: size.height * 0.04),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonSearch(title: '  Search on Google  ',),
-              SizedBox(width: 20),
-              ButtonSearch(title: '  I feel lucky  ',)
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class ButtonSearch extends StatelessWidget {
-
+class GoogleText extends StatelessWidget {
+  
   final String title;
+  final Color color;
 
-  const ButtonSearch({
+  const GoogleText({
     Key key,
     this.title,
-  }) : super(key: key);
+    this.color
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      onPressed: () {},
-      height: 40,
-      color: Colors.grey[200],
-      child: Text(
-        title,
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          color: Colors.grey[700],
-        ),
-      )
+    return Text(
+      title,
+      style: TextStyle(
+        color: color ?? cColor,
+        fontFamily: 'Product',
+        fontSize: 80,
+        fontWeight: FontWeight.w600,
+      ),
     );
   }
 }
@@ -85,39 +36,15 @@ class GoogleWord extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      GoogleText(title: 'G',),
-      GoogleText(title: 'o', color: dColor,),
-      GoogleText(title: 'o', color: eColor,),
-      GoogleText(title: 'g',),
-      GoogleText(title: 'l', color: fColor,),
-      GoogleText(title: 'e', color: dColor,),
-      ]
-    );
-  }
-}
-
-class GoogleText extends StatelessWidget {
-
-  final String title;
-  final Color color;
-
-  const GoogleText({
-    Key key,
-    this.title,
-    this.color,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        color: color ?? cColor,
-        fontFamily: 'KronaOne',
-        fontSize: 70,
-      ),
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GoogleText(title: 'G',),
+        GoogleText(title: 'o', color: dColor,),
+        GoogleText(title: 'o', color: eColor,),
+        GoogleText(title: 'g',),
+        GoogleText(title: 'l', color: fColor,),
+        GoogleText(title: 'e', color: dColor,),
+      ],
     );
   }
 }
@@ -136,23 +63,27 @@ class TextFieldBox extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10),
           alignment: Alignment.center,
           width: 600,
-          height: 50,
+          height: 40,
           decoration: BoxDecoration(
             color: bColor,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey,
+                color: gColor,
               )
-            ]
+            ],
           ),
           child: TextField(
             onChanged: (val) {},
             style: TextStyle(
-              color: Colors.black,
+              color: hColor,
             ),
             decoration: InputDecoration(
-              icon: Icon(Icons.search),
+              icon: Icon(
+                Icons.search,
+                size: 20,
+                color: gColor,  
+              ),
               enabledBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
               suffixIcon: Icon(
@@ -163,6 +94,32 @@ class TextFieldBox extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class ButtonSearch extends StatelessWidget {
+
+  final String title;
+
+  const ButtonSearch({
+    Key key,
+    this.title
+    }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      onPressed: () {},
+      height: 40,
+      color: iColor,
+      child: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: jColor,
+        ),
+      ),
     );
   }
 }

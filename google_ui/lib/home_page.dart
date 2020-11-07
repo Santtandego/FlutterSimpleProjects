@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_ui/Components/components.dart';
 
-import 'Components/colors.dart';
+import 'Widgets/appbar_widget.dart';
+import 'Widgets/body_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: bColor,
-        elevation: 0.0,
-        actions: actions(),
-      ),
-      body: ContentBody(),
+      appBar: appBarWidget(),
+      body: BodyWidget(),
     );
   }
 }
-

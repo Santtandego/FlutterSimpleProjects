@@ -26,6 +26,6 @@ flutter:
     - family: RobotoC
       fonts:
         - asset: fonts/RobotoCondensed-Light.ttf
-    - family: KronaOne
+    - family: Product
       fonts:
-        - asset: fonts/KronaOne-Regular.ttf
+        - asset: fonts/Product-Sans-Regular.ttf
