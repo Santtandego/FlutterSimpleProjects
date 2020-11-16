@@ -35,7 +35,7 @@ class AppBarIcon extends StatelessWidget {
       child: InkWell(
         onTap: (){},
         child: Icon(
-          Icons.view_module,
+          Icons.apps,
           color: Colors.grey,
           ),
       )
